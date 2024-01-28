@@ -1,0 +1,15 @@
+---
+- name: Create non-root account
+  hosts: all
+  remote_user: root
+
+  vars_prompt:
+    - name: host_hash
+      prompt: Enter password for user
+      private: yes
+      encrypt: sha512_crypt
+      confirm: yes
+
+  roles:
+    - host_provision
+
